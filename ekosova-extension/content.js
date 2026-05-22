@@ -290,22 +290,27 @@ Jep një përgjigje 3–5 fjali në shqip — miqësore, të qartë, pa tituj os
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 #fab {
-  width: 58px; height: 58px;
+  width: auto; height: 48px;
+  padding: 0 46px;
   background: linear-gradient(135deg, ${BLUE}, ${CYAN});
-  border-radius: 50%; border: none; cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
+  border-radius: 16px 0 16px 16px; border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
   box-shadow: 0 4px 20px rgba(29,97,161,.45);
   transition: transform .2s, box-shadow .2s;
   margin-left: auto; position: relative;
 }
-#fab:hover { transform: scale(1.09); box-shadow: 0 6px 28px rgba(29,97,161,.55); }
-#fab-icon { font-size: 26px; line-height: 1; }
+#fab:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(29,97,161,.6); }
+#fab-icon { font-size: 22px; line-height: 1; }
+#fab-label {
+  color: #fff; font-size: 15px; font-weight: 700;
+  white-space: nowrap; font-family: inherit; letter-spacing: .01em;
+}
 #fab-pulse {
-  position: absolute; inset: -3px; border-radius: 50%;
+  position: absolute; inset: -4px; border-radius: 20px;
   border: 2px solid ${CYAN}; opacity: 0;
   animation: pulse 2.5s ease-out infinite;
 }
-@keyframes pulse { 0%{opacity:.6;transform:scale(1)} 100%{opacity:0;transform:scale(1.4)} }
+@keyframes pulse { 0%{opacity:.6;transform:scale(1)} 100%{opacity:0;transform:scale(1.08)} }
 
 #panel {
   display: none; flex-direction: column;
@@ -453,6 +458,7 @@ Jep një përgjigje 3–5 fjali në shqip — miqësore, të qartë, pa tituj os
   <button id="fab" aria-label="Hap Smart Assist">
     <div id="fab-pulse"></div>
     <span id="fab-icon">💬</span>
+    <span id="fab-label">Smart Assist</span>
   </button>
 </div>
 `;

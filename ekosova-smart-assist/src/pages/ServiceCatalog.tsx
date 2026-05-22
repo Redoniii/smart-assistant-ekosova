@@ -28,10 +28,7 @@ export default function ServiceCatalog() {
         <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Link to="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-blue-700 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xs">eK</span>
-              </div>
-              <span className="font-semibold text-slate-800 text-sm">eKosova Smart Assist</span>
+              <img src="/ekosova-logo.svg" className="h-8 w-auto" alt="eKosova" />
             </Link>
             <span className="text-slate-300">|</span>
             <span className="text-sm font-medium text-slate-600">Katalogu i Shërbimeve</span>

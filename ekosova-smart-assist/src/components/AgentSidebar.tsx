@@ -21,13 +21,10 @@ export default function AgentSidebar({ activeSection, onSectionChange }: AgentSi
       {/* Logo */}
       <div className="p-5 border-b border-slate-700">
         <div className="flex items-center gap-2.5">
-          <div className="w-9 h-9 bg-blue-600 rounded-lg flex items-center justify-center">
-            <span className="text-white font-bold text-sm">eK</span>
+          <div className="bg-white rounded-lg px-2 py-1">
+            <img src="/ekosova-logo.svg" className="h-7 w-auto" alt="eKosova" />
           </div>
-          <div className="leading-tight">
-            <div className="font-bold text-white text-sm">eKosova</div>
-            <div className="text-blue-400 text-xs font-medium">Agent Co-Pilot</div>
-          </div>
+          <div className="text-blue-400 text-xs font-medium leading-tight">Agent<br />Co-Pilot</div>
         </div>
       </div>
 

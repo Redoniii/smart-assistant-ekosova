@@ -9,6 +9,7 @@ import { getServiceById } from '../utils/search'
 import { updateRequestStatus } from '../utils/storage'
 import { useToast } from '../context/ToastContext'
 import ConfidenceBadge from './ConfidenceBadge'
+import MarkdownText from './MarkdownText'
 import {
   streamCoPilotAnalysis,
   streamFollowUp,
@@ -365,9 +366,10 @@ export default function CoPilotPanel({ request, onClose, onStatusChange }: CoPil
                         Kopjo
                       </button>
                     </div>
-                    <p className="text-base text-white leading-relaxed font-medium">
-                      {analysis.suggestedAnswer}
-                    </p>
+                    <MarkdownText
+                      text={analysis.suggestedAnswer}
+                      className="text-base text-white leading-relaxed font-medium"
+                    />
                   </div>
 
                   {/* Key Points */}
@@ -397,7 +399,7 @@ export default function CoPilotPanel({ request, onClose, onStatusChange }: CoPil
                         <Target size={14} className="text-purple-600" />
                         <h4 className="text-xs font-bold text-purple-700 uppercase tracking-wide">Ton dhe komunikim</h4>
                       </div>
-                      <p className="text-sm text-slate-700 leading-relaxed">{analysis.toneTips}</p>
+                      <MarkdownText text={analysis.toneTips} className="text-sm text-slate-700 leading-relaxed" />
                     </div>
                   )}
 
@@ -479,12 +481,9 @@ export default function CoPilotPanel({ request, onClose, onStatusChange }: CoPil
                             msg.streaming ? 'border-blue-200' : 'border-slate-200'
                           }`}>
                             {msg.answer
-                              ? <>
-                                  {msg.answer}
-                                  {msg.streaming && (
-                                    <span className="inline-block w-1.5 h-4 bg-blue-500 animate-pulse ml-1 align-middle" />
-                                  )}
-                                </>
+                              ? msg.streaming
+                                ? <>{msg.answer}<span className="inline-block w-1.5 h-4 bg-blue-500 animate-pulse ml-1 align-middle" /></>
+                                : <MarkdownText text={msg.answer} />
                               : <span className="flex items-center gap-1.5 text-slate-400">
                                   <span className="w-3 h-3 border-2 border-blue-400 border-t-transparent rounded-full animate-spin" />
                                   Po shkruan…
