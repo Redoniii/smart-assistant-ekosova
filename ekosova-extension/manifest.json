@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "eKosova Smart Assist",
+  "version": "1.0.0",
+  "description": "Asistent inteligjent për shërbime publike — ndihmon qytetarët direkt në rks-gov.net",
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://ekosova.rks-gov.net/*",
+    "https://www.rks-gov.net/*",
+    "https://rks-gov.net/*",
+    "https://api.openai.com/*",
+    "http://localhost:5173/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://ekosova.rks-gov.net/*",
+        "https://www.rks-gov.net/*",
+        "https://rks-gov.net/*"
+      ],
+      "js": ["apikey.js", "content.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["http://localhost:5173/*"],
+      "js": ["bridge.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "eKosova Smart Assist"
+  }
+}
