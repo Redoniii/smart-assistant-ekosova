@@ -14,13 +14,14 @@ export async function streamCitizenAnswer(
   }
 
   const prompt = `Qytetari pyet: "${question}"
-Shërbimi: ${service.title} (${service.category})
-Përshkrimi: ${service.simpleDescription}
+Shërbimi: ${service.title}
+Portali zyrtar: ${service.portalUrl}
+Hapat konkretë në portal:
+${service.steps.map((s, i) => `${i + 1}. ${s}`).join('\n')}
 Dokumentet: ${service.requiredDocuments.join(', ')}
-Hapat: ${service.steps.map((s, i) => `${i + 1}. ${s}`).join(' | ')}
-Koha: ${service.estimatedTime}
+Koha e pritjes: ${service.estimatedTime}
 
-Shkruaj një përgjigje 3–5 fjali drejtpërdrejt tek qytetari, në shqip. Ji miqësor dhe i qartë. Pa tituj, pa formatim — vetëm tekst i natyrshëm.`
+Shkruaj një përgjigje të shkurtër drejtpërdrejt tek qytetari, në shqip. Udhëzoje të shkojë në ${service.portalUrl} dhe jepi hapat kryesorë se çfarë të klikojë dhe çfarë t'i duhet gati. Ji i qartë dhe konkret. Pa tituj — vetëm tekst i natyrshëm.`
 
   const response = await fetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
@@ -63,41 +64,51 @@ Shkruaj një përgjigje 3–5 fjali drejtpërdrejt tek qytetari, në shqip. Ji m
 }
 
 export interface CoPilotAnalysis {
+  situation: string
+  situationType: 'routine' | 'sensitive' | 'urgent' | 'redirect' | 'complex'
+  opening: string
+  coaching: string[]
   suggestedAnswer: string
-  keyPoints: string[]
-  followUpQuestions: string[]
-  toneTips: string
+  watchOut: string[]
+  verification: string[]
 }
 
 function buildPrompt(citizenQuestion: string, service: Service): string {
-  return `Ti je Co-Pilot i eKosova — ndihmon agjentët e call center të Kosovës të përgjigjen me profesionalizëm dhe mirësjellje ndaj qytetarëve, GJITHMONË në gjuhën shqipe.
+  return `Ti je Co-Pilot i eKosova — asistent situacional për agjentët e call center. Analizon LLOJIN e thirrjes dhe udhëzon agjentin se si ta menaxhojë atë hap-pas-hapi. Gjithmonë VETËM në shqip.
 
 PYETJA E QYTETARIT: "${citizenQuestion}"
+SHËRBIMI: ${service.title} (${service.category})
+PORTALI ZYRTAR: ${service.portalUrl}
+HAPAT NË PORTAL:
+${service.steps.map((s, i) => `  ${i + 1}. ${s}`).join('\n')}
+DOKUMENTET: ${service.requiredDocuments.join(', ')}
+KOHA: ${service.estimatedTime}
+FAQ: ${service.faqs.map(f => `[${f.question}: ${f.answer}]`).join(' ')}
 
-SHËRBIMI I PËRPUTHUR: ${service.title} (${service.category})
-PËRSHKRIMI: ${service.shortDescription}
-DOKUMENTET E NEVOJSHME: ${service.requiredDocuments.join(', ')}
-HAPAT: ${service.steps.map((s, i) => `${i + 1}. ${s}`).join(' | ')}
-PYETJE TË SHPESHTA: ${service.faqs.map(f => `Q: ${f.question} A: ${f.answer}`).join(' | ')}
-KOHA E VLERËSUAR: ${service.estimatedTime}
+RREGULL: Gjithmonë udhëzo qytetarin të përdorë portalin ONLINE (${service.portalUrl}). Kurrë mos sugjero zyrë fizike nëse shërbimi bëhet online.
 
-Bëj një analizë Co-Pilot. Përgjigju SAKTËSISHT në këtë format:
+Bëj analizën. Përgjigju SAKTËSISHT në këtë format:
+
+## SITUATION
+[1-2 fjali: çfarë situate është kjo thirrje? Çfarë dëshiron qytetari dhe a ka ndonjë kompleksitet apo ndjenjë që agjenti duhet ta ketë parasysh?]
+
+## SITUATION_TYPE
+[vetëm një fjalë nga lista: routine / sensitive / urgent / redirect / complex]
+
+## OPENING
+[Fjalia e parë SAKTË që agjenti duhet ta thotë — të ngrohtë, me emrin e shërbimit, konfirmim se është në vendin e duhur]
+
+## COACHING
+[5-6 hapa konkretë si ta menaxhojë agjenti thirrjen — jo skriptë, por udhëzim SE ÇKA TË BËJË: çfarë të pyesë, çfarë të konfirmojë, si ta udhëzojë qytetarin nëpër portal, si ta mbyllë thirrjen]
 
 ## SUGGESTED_ANSWER
-[Shkruaj përgjigjen e plotë që agjenti e lexon drejtpërdrejt te qytetari.
-DUHET të fillojë me një përshëndetje profesionale si: "Mirëdita, faleminderit që kontaktuat eKosova! Jam këtu t'ju ndihmoj."
-DUHET të mbulojë pyetjen qartë dhe plotësisht.
-DUHET të mbarojë me: "A keni ndonjë pyetje tjetër? Jemi gjithmonë në dispozicion për ju." ose diçka të ngjashme.
-Toni: i ngrohtë, profesional, miqësor — si agjent i vërtetë call center.]
+[Skripti i plotë i gatshëm — agjenti mund ta lexojë drejtpërdrejt. Fillo me "Mirëdita, faleminderit që kontaktuat eKosova!" dhe jepi URL-në e portalit me hapat konkretë. Mbaro me "A keni ndonjë pyetje tjetër?"]
 
-## KEY_POINTS
-[Rendit 3-5 pika kyçe që agjenti duhet të mbulojë, secila në rresht të ri me •]
+## WATCH_OUT
+[2-3 paralajmërime specifike: çfarë mund të shkojë keq, keqkuptime të mundshme, raste kur mund të duhet eskalim]
 
-## FOLLOW_UP_QUESTIONS
-[Rendit 3 pyetje që qytetari mund t'i bëjë më pas, secila në rresht të ri me •]
-
-## TONE_TIPS
-[Shkruaj 2-3 fjali me këshilla specifike mbi tonin dhe komunikimin për këtë rast.]`
+## VERIFY
+[3 pyetje kontrolli që agjenti t'i bëjë para se ta mbyllë thirrjen — si "A i keni dokumentet gati?", "A e keni hapur portalin?"]`
 }
 
 export async function streamCoPilotAnalysis(
@@ -126,7 +137,7 @@ export async function streamCoPilotAnalysis(
         {
           role: 'system',
           content:
-            'Ti je Co-Pilot i eKosova — asistent për agjentët e call center të shërbimeve publike të Kosovës. Gjithmonë përgjigju VETËM në gjuhën shqipe. Sugjero përgjigje profesionale, të ngrohta dhe miqësore që fillojnë me përshëndetje si "Mirëdita, faleminderit që kontaktuat eKosova!" dhe mbarojnë me ofertë ndihme të mëtejshme.',
+            'Ti je Co-Pilot i eKosova — asistent situacional i trajnuar për call center të shërbimeve publike të Kosovës. Rolin tënd nuk është vetëm të gjenerosh skriptë — por të analizosh situatën, të udhëzosh agjentin se ÇSI ta menaxhojë thirrjen, çfarë ta ketë parasysh dhe si ta mbyllë me sukses. Gjithmonë VETËM në shqip.',
         },
         {
           role: 'user',
@@ -135,7 +146,7 @@ export async function streamCoPilotAnalysis(
       ],
       stream: true,
       temperature: 0.4,
-      max_tokens: 900,
+      max_tokens: 1500,
     }),
   })
 
@@ -277,13 +288,20 @@ export function parseAnalysis(raw: string): CoPilotAnalysis {
   const parseBullets = (text: string): string[] =>
     text
       .split('\n')
-      .map((l) => l.replace(/^[•\-\*]\s*/, '').trim())
+      .map((l) => l.replace(/^[\d]+\.\s*|^[•\-\*]\s*/, '').trim())
       .filter(Boolean)
 
+  const rawType = get('SITUATION_TYPE').toLowerCase()
+  const validTypes = ['routine', 'sensitive', 'urgent', 'redirect', 'complex'] as const
+  const situationType = (validTypes.find((t) => rawType.includes(t)) ?? 'routine')
+
   return {
+    situation: get('SITUATION'),
+    situationType,
+    opening: get('OPENING'),
+    coaching: parseBullets(get('COACHING')),
     suggestedAnswer: get('SUGGESTED_ANSWER'),
-    keyPoints: parseBullets(get('KEY_POINTS')),
-    followUpQuestions: parseBullets(get('FOLLOW_UP_QUESTIONS')),
-    toneTips: get('TONE_TIPS'),
+    watchOut: parseBullets(get('WATCH_OUT')),
+    verification: parseBullets(get('VERIFY')),
   }
 }

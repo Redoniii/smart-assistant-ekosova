@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react'
 import {
   Bot, Check, Clipboard, AlertTriangle, MessageSquare, CheckCircle2,
-  HelpCircle, Target, RotateCcw, ArrowUp, X, Smartphone, Mail,
-  ChevronRight, Zap, PhoneCall,
+  ShieldAlert, ListChecks, RotateCcw, ArrowUp, X, Smartphone, Mail,
+  ChevronRight, Zap, PhoneCall, Brain, Mic,
 } from 'lucide-react'
 import type { SupportRequest } from '../types'
 import { getServiceById } from '../utils/search'
@@ -347,16 +347,101 @@ export default function CoPilotPanel({ request, onClose, onStatusChange }: CoPil
                 </div>
               )}
 
-              {/* Done — parsed analysis */}
+              {/* Done — coaching analysis */}
               {aiState === 'done' && analysis && (
                 <div className="space-y-3">
 
-                  {/* HERO: Suggested Answer */}
-                  <div className="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl p-5 shadow-md">
+                  {/* Situation badge */}
+                  {analysis.situation && (
+                    <div className={`rounded-xl px-4 py-3 border flex items-start gap-3 ${
+                      analysis.situationType === 'urgent'   ? 'bg-red-50 border-red-200' :
+                      analysis.situationType === 'sensitive' ? 'bg-amber-50 border-amber-200' :
+                      analysis.situationType === 'redirect'  ? 'bg-purple-50 border-purple-200' :
+                      analysis.situationType === 'complex'   ? 'bg-indigo-50 border-indigo-200' :
+                                                               'bg-emerald-50 border-emerald-200'
+                    }`}>
+                      <Brain size={16} className={`shrink-0 mt-0.5 ${
+                        analysis.situationType === 'urgent'   ? 'text-red-500' :
+                        analysis.situationType === 'sensitive' ? 'text-amber-500' :
+                        analysis.situationType === 'redirect'  ? 'text-purple-500' :
+                        analysis.situationType === 'complex'   ? 'text-indigo-500' :
+                                                                 'text-emerald-600'
+                      }`} />
+                      <div className="min-w-0">
+                        <span className={`text-xs font-bold uppercase tracking-wide ${
+                          analysis.situationType === 'urgent'   ? 'text-red-600' :
+                          analysis.situationType === 'sensitive' ? 'text-amber-600' :
+                          analysis.situationType === 'redirect'  ? 'text-purple-600' :
+                          analysis.situationType === 'complex'   ? 'text-indigo-600' :
+                                                                   'text-emerald-700'
+                        }`}>
+                          {analysis.situationType === 'urgent'   ? 'Urgjente' :
+                           analysis.situationType === 'sensitive' ? 'Sensitive' :
+                           analysis.situationType === 'redirect'  ? 'Ridrejtim' :
+                           analysis.situationType === 'complex'   ? 'Komplekse' :
+                                                                    'Rutinë'}
+                        </span>
+                        <p className="text-sm text-slate-700 mt-0.5 leading-snug">{analysis.situation}</p>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Opening line */}
+                  {analysis.opening && (
+                    <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
+                      <div className="flex items-center gap-2 mb-2">
+                        <Mic size={14} className="text-blue-600" />
+                        <h4 className="text-xs font-bold text-blue-700 uppercase tracking-wide">Hap thirrjen me</h4>
+                      </div>
+                      <p className="text-sm font-medium text-slate-800 leading-relaxed italic">"{analysis.opening}"</p>
+                    </div>
+                  )}
+
+                  {/* Coaching steps */}
+                  {analysis.coaching.length > 0 && (
+                    <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+                      <div className="flex items-center gap-2 mb-3">
+                        <ListChecks size={14} className="text-slate-600" />
+                        <h4 className="text-xs font-bold text-slate-600 uppercase tracking-wide">Si ta menaxhosh thirrjen</h4>
+                      </div>
+                      <ol className="space-y-2.5">
+                        {analysis.coaching.map((step, i) => (
+                          <li key={i} className="flex items-start gap-3 text-sm text-slate-700">
+                            <span className="w-5 h-5 bg-slate-800 text-white rounded-full text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
+                              {i + 1}
+                            </span>
+                            <span className="leading-snug">{step}</span>
+                          </li>
+                        ))}
+                      </ol>
+                    </div>
+                  )}
+
+                  {/* Watch out */}
+                  {analysis.watchOut.length > 0 && (
+                    <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
+                      <div className="flex items-center gap-2 mb-2.5">
+                        <ShieldAlert size={14} className="text-amber-600" />
+                        <h4 className="text-xs font-bold text-amber-700 uppercase tracking-wide">Kujdes</h4>
+                      </div>
+                      <ul className="space-y-1.5">
+                        {analysis.watchOut.map((w, i) => (
+                          <li key={i} className="flex items-start gap-2 text-sm text-slate-700">
+                            <span className="text-amber-500 mt-0.5 shrink-0">⚠</span>
+                            {w}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {/* HERO: Suggested script */}
+                  <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-5 shadow-md">
                     <div className="flex items-center justify-between mb-3">
                       <div className="flex items-center gap-2 text-white">
                         <MessageSquare size={16} />
-                        <span className="text-sm font-bold uppercase tracking-wide opacity-90">Përgjigja e sugjeruar</span>
+                        <span className="text-sm font-bold uppercase tracking-wide opacity-90">Skripti i gatshëm</span>
+                        <span className="text-xs text-slate-400 font-normal">(lexo drejtpërdrejt)</span>
                       </div>
                       <button
                         onClick={handleCopySuggested}
@@ -368,67 +453,25 @@ export default function CoPilotPanel({ request, onClose, onStatusChange }: CoPil
                     </div>
                     <MarkdownText
                       text={analysis.suggestedAnswer}
-                      className="text-base text-white leading-relaxed font-medium"
+                      className="text-sm text-slate-200 leading-relaxed"
                     />
                   </div>
 
-                  {/* Key Points */}
-                  {analysis.keyPoints.length > 0 && (
-                    <div className="bg-emerald-50 border border-emerald-100 rounded-xl p-4">
-                      <div className="flex items-center gap-2 mb-3">
+                  {/* Verification checklist */}
+                  {analysis.verification.length > 0 && (
+                    <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4">
+                      <div className="flex items-center gap-2 mb-2.5">
                         <CheckCircle2 size={14} className="text-emerald-600" />
-                        <h4 className="text-xs font-bold text-emerald-700 uppercase tracking-wide">Pikat kyçe</h4>
+                        <h4 className="text-xs font-bold text-emerald-700 uppercase tracking-wide">Para se ta mbyllësh thirrjen</h4>
                       </div>
-                      <ul className="space-y-2">
-                        {analysis.keyPoints.map((pt, i) => (
-                          <li key={i} className="flex items-start gap-2.5 text-sm text-slate-700">
-                            <span className="w-5 h-5 bg-emerald-600 text-white rounded-full text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
-                              {i + 1}
-                            </span>
-                            {pt}
+                      <ul className="space-y-1.5">
+                        {analysis.verification.map((v, i) => (
+                          <li key={i} className="flex items-start gap-2 text-sm text-slate-700">
+                            <span className="w-4 h-4 border-2 border-emerald-400 rounded shrink-0 mt-0.5" />
+                            {v}
                           </li>
                         ))}
                       </ul>
-                    </div>
-                  )}
-
-                  {/* Tone Tips */}
-                  {analysis.toneTips && (
-                    <div className="bg-purple-50 border border-purple-100 rounded-xl p-4">
-                      <div className="flex items-center gap-2 mb-2">
-                        <Target size={14} className="text-purple-600" />
-                        <h4 className="text-xs font-bold text-purple-700 uppercase tracking-wide">Ton dhe komunikim</h4>
-                      </div>
-                      <MarkdownText text={analysis.toneTips} className="text-sm text-slate-700 leading-relaxed" />
-                    </div>
-                  )}
-
-                  {/* Follow-up question chips */}
-                  {analysis.followUpQuestions.length > 0 && (
-                    <div className="bg-amber-50 border border-amber-100 rounded-xl p-4">
-                      <div className="flex items-center gap-2 mb-2.5">
-                        <HelpCircle size={14} className="text-amber-600" />
-                        <h4 className="text-xs font-bold text-amber-700 uppercase tracking-wide">
-                          Pyetje të mundshme vijuese
-                        </h4>
-                        <span className="text-xs text-amber-500 font-normal ml-auto">kliko për t'i dërguar</span>
-                      </div>
-                      <div className="flex flex-wrap gap-2">
-                        {analysis.followUpQuestions.map((q, i) => (
-                          <button
-                            key={i}
-                            disabled={followUpLoading}
-                            onClick={() => {
-                              setFollowUpInput(q)
-                              setTimeout(() => inputRef.current?.focus(), 50)
-                            }}
-                            className="flex items-center gap-1 text-xs bg-white border border-amber-200 text-amber-800 px-3 py-1.5 rounded-full hover:bg-amber-100 transition-colors disabled:opacity-50 text-left"
-                          >
-                            <ChevronRight size={10} />
-                            {q}
-                          </button>
-                        ))}
-                      </div>
                     </div>
                   )}
 

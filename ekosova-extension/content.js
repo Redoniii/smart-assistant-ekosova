@@ -16,8 +16,9 @@
       category: 'Gjendja Civile',
       kw: ['lindje', 'lindjes', 'certifikat', 'fëmijë', 'akt', 'civil', 'lindur', 'regjistrim', 'birth'],
       desc: 'Dokument zyrtar që vërteton lindjen e një personi në Kosovë.',
-      docs: ['Letërnjoftim i prindërit', 'Libri familjar'],
-      steps: ['Paraqituni në qendrën komunale', 'Dorëzoni dokumentet', 'Paguani tarifën (1€)', 'Merrni certifikatën brenda 1–3 ditëve'],
+      portalUrl: 'https://e-kosova.rks-gov.net',
+      docs: ['Numri personal', 'Llogaria aktive në eKosova'],
+      steps: ['Shkoni te https://e-kosova.rks-gov.net dhe kyçuni', 'Klikoni "Shërbimet" në menunë kryesore', 'Zgjidhni kategorinë "Gjendja Civile"', 'Klikoni "Certifikatë e Lindjes"', 'Plotësoni formularin me numrin personal', 'Klikoni "Dërgo Kërkesën"', 'Shkarkoni dokumentin nga "Kërkesat e Mia" kur të aprovohet'],
       time: '1–3 ditë pune',
     },
     {
@@ -26,8 +27,9 @@
       category: 'Gjendja Civile',
       kw: ['vendbanim', 'banim', 'adresë', 'jetoj', 'ku jetoj', 'banor', 'vendqëndrim', 'certifikat', 'adresa'],
       desc: 'Vërteton adresën zyrtare të vendbanimit të qytetarit sipas regjistrit civil.',
-      docs: ['Letërnjoftim'],
-      steps: ['Shkoni në komunën tuaj', 'Kërkoni certifikatën e vendbanimit', 'Paguani tarifën', 'Merrni dokumentin menjëherë ose brenda 1 dite'],
+      portalUrl: 'https://e-kosova.rks-gov.net',
+      docs: ['Numri personal', 'Llogaria aktive në eKosova'],
+      steps: ['Shkoni te https://e-kosova.rks-gov.net dhe kyçuni', 'Klikoni "Shërbimet"', 'Zgjidhni "Gjendja Civile"', 'Klikoni "Certifikatë e Vendbanimit"', 'Verifikoni adresën tuaj dhe plotësoni formularin', 'Klikoni "Dërgo Kërkesën"', 'Shkarkoni nga "Kërkesat e Mia" kur aprovohet'],
       time: '30 minuta – 1 ditë',
     },
     {
@@ -35,19 +37,21 @@
       title: 'Ndërrimi i Adresës',
       category: 'Gjendja Civile',
       kw: ['ndërroj', 'adresë', 'ndrysho', 'lëvizje', 'adres', 'transferim', 'regjistrim adresë', 'ndërrimi'],
-      desc: 'Ndryshimi i adresës zyrtare të vendbanimit në regjistrin civil të komunës.',
+      desc: 'Ndryshimi i adresës zyrtare të vendbanimit në regjistrin civil.',
+      portalUrl: 'https://e-kosova.rks-gov.net',
       docs: ['Letërnjoftim', 'Kontratë qiraje ose dokument pronësie'],
-      steps: ['Paraqituni në komunë', 'Plotësoni formularin e ndërrimit', 'Dorëzoni dokumentet mbështetëse', 'Prisni konfirmimin'],
+      steps: ['Shkoni te https://e-kosova.rks-gov.net dhe kyçuni', 'Klikoni "Shërbimet"', 'Zgjidhni "Gjendja Civile" > "Ndërrimi i Adresës"', 'Plotësoni adresën e re', 'Ngarkoni dokumentin mbështetës (faturë ose kontratë)', 'Dërgoni kërkesën dhe prisni konfirmimin'],
       time: '1–5 ditë pune',
     },
     {
       id: 'dokument-personal',
       title: 'Letërnjoftim / Pasaportë',
       category: 'Dokumentet Personale',
-      kw: ['letërnjoftim', 'pasaportë', 'id', 'dokument', 'personal', 'kartë identiteti', 'kartë', 'pasaport', 'rinovim'],
+      kw: ['letërnjoftim', 'pasaportë', 'id', 'dokument', 'personal', 'kartë identiteti', 'kartë', 'pasaport', 'rinovim', 'lnj'],
       desc: 'Lëshimi i ri ose rinovimi i letërnjoftimit dhe pasaportës të Kosovës.',
-      docs: ['Fotografi biometrike', 'Certifikatë lindjeje', 'Tarifa e shërbimit'],
-      steps: ['Aplikoni online në eKosova ose vizitoni zyrën', 'Dorëzoni dokumentet dhe fotografinë', 'Paguani tarifën', 'Prisni 10–15 ditë'],
+      portalUrl: 'https://e-kosova.rks-gov.net',
+      docs: ['Certifikatë lindjeje', 'Foto biometrike', 'Tarifë administrative'],
+      steps: ['Shkoni te https://e-kosova.rks-gov.net dhe kyçuni', 'Klikoni "Shërbimet"', 'Zgjidhni "Dokumente Personale"', 'Klikoni "Aplikim për Dokument Personal"', 'Zgjidhni llojin: Letërnjoftim ose Pasaportë', 'Plotësoni formularin dhe ngarkoni dokumentet', 'Paguani tarifën online', 'Paraqituni fizikisht vetëm për marrjen e gjurmëve biometrike'],
       time: '10–15 ditë pune',
     },
     {
@@ -56,8 +60,9 @@
       category: 'Biznesi',
       kw: ['biznes', 'regjistrim', 'kompani', 'firmë', 'ndërmarrje', 'hap', 'hapur', 'ARBK', 'sh.p.k', 'tregtia'],
       desc: 'Regjistrimi i ndërmarrjes së re ose ndryshimi i të dhënave të biznesit tuaj.',
+      portalUrl: 'https://arbk.rks-gov.net',
       docs: ['Letërnjoftim', 'Adresë e biznesit', 'Statuti (për SH.P.K.)'],
-      steps: ['Zgjidhni emrin e disponueshëm të biznesit', 'Plotësoni formularin në ARBK', 'Paguani tarifën e regjistrimit', 'Merrni certifikatën e biznesit'],
+      steps: ['Shkoni te https://arbk.rks-gov.net', 'Klikoni "Regjistro Biznesin"', 'Zgjidhni llojin e biznesit (NI, SH.P.K. etj.)', 'Plotësoni emrin dhe të dhënat e themeluesve', 'Ngarkoni dokumentet e kërkuara', 'Paguani tarifën e regjistrimit', 'Merrni NUI-n pas aprovimit'],
       time: '3–7 ditë pune',
     },
     {
@@ -65,9 +70,10 @@
       title: 'Tatimi në Pronë',
       category: 'Tatimi',
       kw: ['tatim', 'pronë', 'shtëpi', 'prona', 'ATK', 'paguaj', 'taksa', 'deklaratë', 'prone', 'toka'],
-      desc: 'Deklarimi dhe pagesa e tatimit vjetor në pronë tek Administrata Tatimore e Kosovës.',
-      docs: ['Letërnjoftim', 'Akti i pronësisë / kontrata e blerjes'],
-      steps: ['Hyrni në portalin eKosova', 'Deklaroni pronën tuaj', 'Shikoni shumën e tatimit', 'Paguani online ose në bankë'],
+      desc: 'Deklarimi dhe pagesa e tatimit vjetor në pronë.',
+      portalUrl: 'https://e-kosova.rks-gov.net',
+      docs: ['Numri personal', 'Numri kadastral i pronës'],
+      steps: ['Shkoni te https://e-kosova.rks-gov.net dhe kyçuni', 'Klikoni "Shërbimet"', 'Zgjidhni "Financa Publike" > "Tatimi në Pronë"', 'Kontrolloni detajet e pronës suaj', 'Shihni shumën e tatimit', 'Zgjidhni metodën e pagesës dhe paguani online', 'Ruani konfirmimin e pagesës'],
       time: '30 minuta',
     },
     {
@@ -75,9 +81,10 @@
       title: 'Ndihma Sociale',
       category: 'Mbrojtja Sociale',
       kw: ['ndihmë', 'sociale', 'mbështetje', 'familjare', 'të varfër', 'zasilek', 'asistence', 'ekonomike'],
-      desc: 'Aplikimi për ndihmë ekonomike dhe mbështetje sociale nga Ministria e Punës.',
-      docs: ['Letërnjoftim të gjithë anëtarëve', 'Certifikatë familjare', 'Deklaratë e pasurisë'],
-      steps: ['Aplikoni në MPMS ose komunën tuaj', 'Dorëzoni dokumentet e familjes', 'Pritet inspektimi social', 'Vendimi brenda 30 ditëve'],
+      desc: 'Aplikimi për ndihmë ekonomike dhe mbështetje sociale.',
+      portalUrl: 'https://e-kosova.rks-gov.net',
+      docs: ['Letërnjoftim i të gjithë anëtarëve', 'Certifikatë familjare', 'Vërtetim i të ardhurave'],
+      steps: ['Shkoni te https://e-kosova.rks-gov.net dhe kyçuni', 'Klikoni "Shërbimet"', 'Zgjidhni "Mirëqenie Sociale" > "Ndihmë Sociale"', 'Plotësoni formularin e aplikimit', 'Ngarkoni dokumentet e familjes', 'Dërgoni aplikimin', 'Prisni vizitën e inspektorit dhe vendimin brenda 30 ditëve'],
       time: '15–30 ditë pune',
     },
     {
@@ -86,8 +93,9 @@
       category: 'Gjendja Civile',
       kw: ['martesë', 'martese', 'çift', 'bashkëshort', 'kurorë', 'lidhje', 'marriage', 'i martuar', 'e martuar'],
       desc: 'Dokument zyrtar që dëshmon lidhjen e martesës ndërmjet dy personave.',
-      docs: ['Letërnjoftim i të dy bashkëshortëve'],
-      steps: ['Kyçuni në eKosova', 'Zgjidhni "Gjendja Civile" > "Certifikatë e Martesës"', 'Plotësoni dhe dërgoni kërkesën', 'Shkarkoni dokumentin'],
+      portalUrl: 'https://e-kosova.rks-gov.net',
+      docs: ['Numri personal i të dy bashkëshortëve'],
+      steps: ['Shkoni te https://e-kosova.rks-gov.net dhe kyçuni', 'Klikoni "Shërbimet"', 'Zgjidhni "Gjendja Civile" > "Certifikatë e Martesës"', 'Plotësoni të dhënat e kërkuara', 'Klikoni "Dërgo Kërkesën"', 'Shkarkoni dokumentin nga "Kërkesat e Mia"'],
       time: 'Disa minuta – 1 ditë',
     },
     {
@@ -96,8 +104,9 @@
       category: 'Gjendja Civile',
       kw: ['vdekje', 'vdekjeje', 'i ndjerë', 'e ndjerë', 'vdiq', 'lëshim', 'death', 'vdekur', 'ndërroi jetë'],
       desc: 'Dokument zyrtar që dëshmon vdekjen e një personi.',
+      portalUrl: 'https://e-kosova.rks-gov.net',
       docs: ['Raport mjekësor i vdekjes', 'Letërnjoftim i aplikantit'],
-      steps: ['Paraqituni në komunë ose kyçuni në eKosova', 'Dorëzoni raportin mjekësor', 'Merrni certifikatën brenda 1–2 ditëve'],
+      steps: ['Shkoni te https://e-kosova.rks-gov.net dhe kyçuni', 'Klikoni "Shërbimet"', 'Zgjidhni "Gjendja Civile" > "Certifikatë e Vdekjes"', 'Ngarkoni raportin mjekësor', 'Dërgoni kërkesën', 'Merrni certifikatën brenda 1–2 ditëve'],
       time: '1–2 ditë pune',
     },
     {
@@ -106,8 +115,9 @@
       category: 'Gjendja Civile',
       kw: ['familje', 'familjare', 'libër familjar', 'anëtarë', 'family', 'certifikat familje', 'gjendja familjare'],
       desc: 'Dokument që përfshin të dhënat e të gjithë anëtarëve të familjes.',
+      portalUrl: 'https://e-kosova.rks-gov.net',
       docs: ['Numri personal', 'Llogaria aktive në eKosova'],
-      steps: ['Kyçuni në eKosova', 'Zgjidhni "Certifikatë Familjare"', 'Verifikoni të dhënat', 'Shkarkoni dokumentin'],
+      steps: ['Shkoni te https://e-kosova.rks-gov.net dhe kyçuni', 'Klikoni "Shërbimet"', 'Zgjidhni "Gjendja Civile" > "Certifikatë Familjare"', 'Verifikoni të dhënat e familjes', 'Klikoni "Dërgo Kërkesën"', 'Shkarkoni dokumentin nga "Kërkesat e Mia"'],
       time: 'Disa minuta – 1 ditë',
     },
     {
@@ -116,8 +126,9 @@
       category: 'Mbrojtja Sociale',
       kw: ['pension', 'pleqëri', 'pensionist', 'moshë', 'trust', 'kontribut', 'retirement', 'pension pleqërie', 'dalë në pension'],
       desc: 'Aplikim për pension të pleqërisë ose kontrollim i statusit të pensionit.',
+      portalUrl: 'https://tkk.rks-gov.net',
       docs: ['Letërnjoftim', 'Vërtetim i viteve të punës', 'Llogaria bankare'],
-      steps: ['Aplikoni në eKosova ose Trustin Pensional', 'Dorëzoni vërtetimin e punës', 'Prisni vendimin 30–60 ditë'],
+      steps: ['Shkoni te https://tkk.rks-gov.net (Trusti i Kursimeve Pensionale)', 'Klikoni "Apliko për Pension"', 'Plotësoni formularin e aplikimit', 'Ngarkoni vërtetimin e viteve të punës', 'Dorëzoni aplikimin', 'Prisni vendimin brenda 30–60 ditëve'],
       time: '30–60 ditë pune',
     },
     {
@@ -125,9 +136,10 @@
       title: 'Pension i Invaliditetit',
       category: 'Mbrojtja Sociale',
       kw: ['invaliditet', 'aftësi të kufizuara', 'sëmundje', 'paaftësi', 'disability', 'invalid', 'pension invaliditeti'],
-      desc: 'Pension për personat që nuk mund të punojnë për shkak të sëmundjes ose aftësisë së kufizuar.',
-      docs: ['Raport mjekësor i komisionit', 'Letërnjoftim', 'Llogaria bankare'],
-      steps: ['Vlerësim nga komisioni mjekësor', 'Aplikoni në Ministrinë e Punës', 'Dorëzoni raportin mjekësor', 'Prisni vendimin'],
+      desc: 'Pension për personat që nuk mund të punojnë për shkak të aftësisë së kufizuar.',
+      portalUrl: 'https://mpms.rks-gov.net',
+      docs: ['Raport mjekësor i komisionit të invaliditetit', 'Letërnjoftim', 'Llogaria bankare'],
+      steps: ['Vizitoni mjekun familjar për vlerësim fillestar', 'Merrni raportin nga komisioni mjekësor', 'Shkoni te https://mpms.rks-gov.net', 'Zgjidhni "Pension Invaliditeti"', 'Ngarkoni raportin mjekësor dhe dokumentet', 'Prisni vendimin'],
       time: '30–90 ditë pune',
     },
     {
@@ -136,8 +148,9 @@
       category: 'Planifikim Urban',
       kw: ['leje ndërtimi', 'ndërtim', 'legalizim', 'objekt', 'shtëpi ndërtoj', 'building permit', 'konstruksion', 'plan'],
       desc: 'Aplikim për leje ndërtimore ose legalizim të ndërtesës ekzistuese.',
-      docs: ['Certifikatë pronësie', 'Projekt arkitektonik', 'Plan kadastral'],
-      steps: ['Aplikoni në komunë ose eKosova', 'Ngarkoni projektin dhe dokumentet', 'Paguani tarifën', 'Merrni lejen pas aprovimit'],
+      portalUrl: 'https://e-kosova.rks-gov.net',
+      docs: ['Certifikatë pronësie', 'Projekt arkitektonik i miratuar', 'Plan kadastral'],
+      steps: ['Shkoni te https://e-kosova.rks-gov.net dhe kyçuni', 'Klikoni "Shërbimet"', 'Zgjidhni "Planifikim Urban" > "Leje Ndërtimore"', 'Ngarkoni projektin arkitektonik dhe planin kadastral', 'Paguani tarifën administrative', 'Prisni inspektimin dhe aprovimin (30–60 ditë)'],
       time: '30–60 ditë pune',
     },
     {
@@ -146,8 +159,9 @@
       category: 'Kadastër',
       kw: ['regjistrim prone', 'kadastër', 'pronësi', 'blerje shtëpi', 'trashëgimi prone', 'tapu', 'tokë', 'pasuri', 'property'],
       desc: 'Regjistrimi ose transferimi i pronësisë së pasurisë së paluajtshme.',
-      docs: ['Kontratë shitblerje e noterizuar', 'Certifikatë kadastrale', 'Letërnjoftim'],
-      steps: ['Paraqituni në AKK ose aplikoni online', 'Dorëzoni kontratën e noterizuar', 'Paguani tatimin e transferimit', 'Merrni certifikatën'],
+      portalUrl: 'https://kca.rks-gov.net',
+      docs: ['Kontratë shitblerje e noterizuar', 'Certifikatë kadastrale', 'Letërnjoftim', 'Vërtetim pagese tatimi'],
+      steps: ['Shkoni te https://kca.rks-gov.net (Agjencia Kadastrale e Kosovës)', 'Klikoni "Regjistrim Prone"', 'Ngarkoni kontratën e noterizuar dhe dokumentet', 'Paguani tarifën dhe tatimin e transferimit (0.5%)', 'Merrni certifikatën e pronësisë pas regjistrimit'],
       time: '5–15 ditë pune',
     },
     {
@@ -156,8 +170,9 @@
       category: 'Transport',
       kw: ['patentë', 'leje drejtimi', 'shofer', 'driving license', 'vozit', 'makinë', 'rinovim patente', 'patent shoferi'],
       desc: 'Aplikim për patentë shoferi të re, rinovim ose zëvendësim.',
+      portalUrl: 'https://e-kosova.rks-gov.net',
       docs: ['Letërnjoftim', 'Certifikatë mjekësore', 'Foto biometrike'],
-      steps: ['Aplikoni në eKosova ose Drejtorinë e Trafikut', 'Jepni provimin teorik/praktik', 'Paguani tarifën', 'Merrni patentën'],
+      steps: ['Shkoni te https://e-kosova.rks-gov.net dhe kyçuni', 'Klikoni "Shërbimet"', 'Zgjidhni "Transport" > "Patentë Shoferi"', 'Plotësoni formularin dhe ngarkoni certifikatën mjekësore', 'Paguani tarifën online', 'Merrni patentën brenda 5–10 ditëve (kërkohet prezencë vetëm për foto)'],
       time: '5–10 ditë pune',
     },
     {
@@ -166,8 +181,9 @@
       category: 'Transport',
       kw: ['regjistrim automjet', 'targa', 'makinë', 'veturë', 'vehicle', 'rinovim targe', 'kontroll teknik', 'automjet'],
       desc: 'Regjistrim, rinovim vjetor ose transferim i targave të automjetit.',
-      docs: ['Certifikata e pronësisë', 'Kontroll teknik', 'Vërtetim sigurimi'],
-      steps: ['Kaloni kontrollin teknik', 'Siguroni sigurimin', 'Aplikoni në Drejtorinë e Trafikut', 'Merrni targat'],
+      portalUrl: 'https://e-kosova.rks-gov.net',
+      docs: ['Certifikata e pronësisë së automjetit', 'Certifikata e kontrollit teknik', 'Vërtetim sigurimi'],
+      steps: ['Kaloni kontrollin teknik të automjetit', 'Siguroni policën e sigurimit', 'Shkoni te https://e-kosova.rks-gov.net dhe kyçuni', 'Zgjidhni "Transport" > "Regjistrim Automjeti"', 'Ngarkoni dokumentet dhe paguani tarifën', 'Merrni targat dhe certifikatën'],
       time: '1–3 ditë pune',
     },
     {
@@ -176,8 +192,9 @@
       category: 'Shëndetësi',
       kw: ['sigurim shëndetësor', 'mjek', 'spital', 'klinikë', 'health insurance', 'FSKSHK', 'kartelë shëndetësore', 'shëndetësi'],
       desc: 'Regjistrim në skemën e sigurimit të detyrueshëm shëndetësor të Kosovës.',
+      portalUrl: 'https://fskshk.rks-gov.net',
       docs: ['Letërnjoftim', 'Vërtetim punësimi'],
-      steps: ['Kontaktoni FSKSHK-në ose aplikoni në eKosova', 'Plotësoni formularin', 'Merrni kartën e sigurimit'],
+      steps: ['Shkoni te https://fskshk.rks-gov.net (Fondi i Sigurimit Shëndetësor)', 'Klikoni "Regjistrohu"', 'Plotësoni formularin e regjistrimit', 'Ngarkoni vërtetimin e punësimit', 'Merrni kartën e sigurimit shëndetësor brenda 3–5 ditëve'],
       time: '3–5 ditë pune',
     },
   ];
@@ -222,13 +239,14 @@
     }
 
     const prompt = `Qytetari pyet: "${question}"
-Shërbimi: ${svc.title} (${svc.category})
-Përshkrimi: ${svc.desc}
-Dokumentet: ${svc.docs.join(', ')}
-Hapat: ${svc.steps.map((s, i) => `${i + 1}. ${s}`).join(' | ')}
+Shërbimi: ${svc.title}
+Portali zyrtar: ${svc.portalUrl}
+Hapat konkretë:
+${svc.steps.map((s, i) => `${i + 1}. ${s}`).join('\n')}
+Dokumentet e nevojshme: ${svc.docs.join(', ')}
 Koha e pritjes: ${svc.time}
 
-Jep një përgjigje 3–5 fjali në shqip — miqësore, të qartë, pa tituj ose formatim. Drejtpërdrejt te qytetari.`;
+Shkruaj një përgjigje të shkurtër drejtpërdrejt tek qytetari, në shqip. Thuaji URL-në e portalit (${svc.portalUrl}) dhe udhëzoje hap pas hapi — çfarë të klikojë, çfarë të zgjedhë, çfarë t'i duhet gati. Mos thuaj kurrë të shkojë fizikisht në zyrë nëse shërbimi bëhet online. Ji konkret dhe i qartë.`;
 
     try {
       const res = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -240,7 +258,7 @@ Jep një përgjigje 3–5 fjali në shqip — miqësore, të qartë, pa tituj os
         body: JSON.stringify({
           model: 'gpt-4o-mini',
           messages: [
-            { role: 'system', content: 'Je Smart Assist i eKosova. Ndihmon qytetarët të gjejnë shërbime publike. Përgjigju shkurt, qartë, në shqip.' },
+            { role: 'system', content: 'Je Smart Assist i eKosova. Ndihmon qytetarët të kryejnë shërbime publike ONLINE. Gjithmonë jepi URL-në e saktë të portalit dhe hapat konkretë se çfarë të klikojë qytetari në sistem. Kurrë mos sugjero të shkojë fizikisht në zyrë nëse shërbimi bëhet online. Përgjigju VETËM në shqip.' },
             { role: 'user', content: prompt },
           ],
           stream: true,

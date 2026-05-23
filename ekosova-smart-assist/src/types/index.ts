@@ -11,6 +11,7 @@ export interface Service {
   estimatedTime: string
   agentTemplate: string
   relatedServices: string[]
+  portalUrl: string
 }
 
 export interface FAQ {
